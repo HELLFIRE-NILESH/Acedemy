@@ -1,4 +1,4 @@
-Acedemy - Class Management App
+
 Acedemy is a comprehensive class management application designed to streamline educational processes by offering features like class scheduling, assignment management, AI-generated notes, discussion forums, and much more.
 
 Key Features
