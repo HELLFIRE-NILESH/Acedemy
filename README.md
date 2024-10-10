@@ -1,67 +1,62 @@
+<h1 align="center">📘 Acedemy - Class Management App</h1>
+<h3 align="center">A comprehensive class management solution for seamless education management</h3>
 
-Acedemy is a comprehensive class management application designed to streamline educational processes by offering features like class scheduling, assignment management, AI-generated notes, discussion forums, and much more.
+<img align="right" alt="coding" width="400" src="https://cdn.dribbble.com/users/730703/screenshots/6581243/avento.gif">
 
-Key Features
-User Roles and Authentication: Manage different user roles (Admin, Teacher, Student).
-Class Scheduling: Set and manage class timetables with reminders and notifications.
-Assignment and Grading System: Assign, submit, and evaluate assignments easily.
-Discussion Forums and Chat: Collaborate and discuss topics in a community-style chat room.
-Course Materials and Resources: Share course notes, materials, and assignments with ease.
-Student Progress Tracking: Track students’ progress over time with detailed reports.
-AI-Generated Notes & Syllabus: Utilize AI to generate customized notes and exam preparation materials.
-Video Lectures: Conduct live video sessions and manage chat rooms for lectures.
-Screenshots
-Add screenshots of your app here to showcase the interface and key features.
+- 🔭 **Current Project:** [Acedemy](https://github.com/yourusername/acedemy)  
+- 🌱 **Learning:** Integrating AI, Firebase, and advanced Flutter techniques  
+- 💬 **Ask me about:** Flutter, Firebase, AI in education  
+- 📫 **Reach me at:** your.email@example.com  
+- ⚡ **Fun fact:** We're bringing AI to classrooms with this app!
 
-Getting Started
-Prerequisites
-Flutter SDK
-Dart SDK
-Firebase account
-Git
-Any editor/IDE (VS Code, Android Studio)
-Installation
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/your-profile" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn Profile" height="30" width="40" /></a>
+<a href="https://instagram.com/your-profile" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram Profile" height="30" width="40" /></a>
+</p>
 
+<h2 align="left">Project Features</h2>
+<ul>
+  <li>User roles and authentication (Admin, Teacher, Student)</li>
+  <li>Class scheduling, reminders, and notifications</li>
+  <li>Assignment creation, submission, and grading system</li>
+  <li>Discussion forums and chat for collaboration</li>
+  <li>AI-generated syllabus, notes, and resources</li>
+  <li>Student progress tracking and reports</li>
+  <li>Live video lectures with chat room integration</li>
+</ul>
 
-Clone the repository:
-git clone https://github.com/yourusername/acedemy.git
+<h3 align="left">Languages and Tools:</h3>
+<p align="left">
+  <a href="https://dart.dev" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="Dart" width="40" height="40"/></a>
+  <a href="https://flutter.dev" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="Flutter" width="40" height="40"/></a>
+  <a href="https://firebase.google.com" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="Firebase" width="40" height="40"/></a>
+  <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML5" width="40" height="40"/></a>
+  <a href="https://kotlinlang.org" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="Kotlin" width="40" height="40"/></a>
+</p>
 
+<h3>Getting Started</h3>
+<ol>
+  <li>Clone the repository:  
+    <pre><code>git clone https://github.com/yourusername/acedemy.git</code></pre>
+  </li>
+  <li>Navigate to the project folder:  
+    <pre><code>cd acedemy</code></pre>
+  </li>
+  <li>Install dependencies:  
+    <pre><code>flutter pub get</code></pre>
+  </li>
+  <li>Configure Firebase: Follow the setup instructions from <a href="https://firebase.google.com/docs/flutter/setup">Firebase Flutter Setup</a>.</li>
+  <li>Run the app:  
+    <pre><code>flutter run</code></pre>
+  </li>
+</ol>
 
-Navigate to the project directory:
-cd acedemy
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=yourusername&show_icons=true&locale=en&layout=compact" alt="Top Languages" /></p>
 
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&locale=en" alt="GitHub Stats" /></p>
 
-Install dependencies:
-flutter pub get
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yourusername&" alt="GitHub Streak" /></p>
 
-
-Configure Firebase:
-Set up Firebase in your project following the official documentation.
-
-
-Run the app:
-flutter run
-
-
-
-Folder Structure
-lib/
-│
-├── models/            # Data models for subjects, users, etc.
-├── services/          # Firebase services (auth, database, storage)
-├── widgets/           # Custom widgets (e.g., SubjectCard, ChatUI)
-├── views/             # Screens (e.g., HomeView, ChatView, NoteView)
-├── ai/                # AI-related files for generating notes, syllabus
-└── main.dart          # Entry point of the app
-
-
-Contributing
-We welcome contributions from the community. Here’s how you can help:
-
-Fork the project.
-Create a new branch for your feature or bugfix.
-Make your changes and commit.
-Push your branch and create a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
+</body>
+</html>
