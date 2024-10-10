@@ -80,18 +80,18 @@ class SubjectCard extends StatelessWidget {
 List<Widget> getSubjectCards() {
   return const [
     SubjectCard(
-      subjectName: 'Mathematics',
-      description: 'Algebra, Geometry, Calculus',
+      subjectName: 'Data Science',
+      description: 'Dr.Anil Mishra',
       imageUrl: 'assets/images/ds.jpg',
     ),
     SubjectCard(
-      subjectName: 'Science',
-      description: 'Physics, Chemistry, Biology',
+      subjectName: 'E-Governance',
+      description: 'Mr.Mahendra Patidar',
       imageUrl: 'assets/images/ds.jpg',
     ),
     SubjectCard(
-      subjectName: 'History',
-      description: 'Ancient, Modern, World',
+      subjectName: 'I.O.T',
+      description: 'Mr.Priyank suneriya',
       imageUrl: 'assets/images/ds.jpg',
     ),
   ];

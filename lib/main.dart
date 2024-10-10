@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode:ThemeMode.light,
-      theme: Mytheme.lighttheme,
+      theme: MyTheme.lightTheme,
       debugShowCheckedModeBanner: false,
       routes: {
         "/": (context) => NavView(),

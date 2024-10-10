@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class AssignmentCard extends StatelessWidget {
   final String title;
   final String dueDate;
-  final String sub;
+  final int Total;
 
   const AssignmentCard({
     Key? key,
     required this.title,
     required this.dueDate,
-    required this.sub,
+    required this.Total,
   }) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class AssignmentCard extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Text(
-                "Sub: $sub  Due: $dueDate",
+                "Total: $Total  Due: $dueDate",
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.grey[600],
@@ -66,19 +66,19 @@ class AssignmentCard extends StatelessWidget {
 List<Widget> getAssignmentCards() {
   return const [
     AssignmentCard(
-      title: "Math Homework",
+      title: "Data Science",
       dueDate: "2023-10-15",
-      sub: "Ds",
+      Total: 28,
     ),
     AssignmentCard(
-      title: "Science Project",
-      sub: "Ds",
+      title: "Renewable Energy",
+      Total: 31,
       dueDate: "2023-10-20",
     ),
     AssignmentCard(
-      title: "History Essay",
+      title: "I.O.T",
       dueDate: "2023-10-25",
-      sub: "Ds",
+      Total: 32,
     ),
   ];
 }

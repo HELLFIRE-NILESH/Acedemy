@@ -10,15 +10,15 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     // Set the status bar style (same as HomePage)
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: const Color(0xFFF6F8F9),
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFF6F8F9),
       statusBarIconBrightness: Brightness.dark,
     ));
 
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Class Chat",
             ),
           ),
@@ -64,14 +64,14 @@ class ChatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0), // Same padding as HomePage
+      contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0), // Same padding as HomePage
       leading: CircleAvatar(
         backgroundImage: AssetImage(chat.avatarUrl),
         radius: 30,
       ),
       title: Text(
         chat.name,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontFamily: "Nunito", // Consistent font
           color: Color(0xFF193238),
@@ -79,11 +79,13 @@ class ChatTile extends StatelessWidget {
       ),
       subtitle: Text(
         chat.message,
-        style: TextStyle(fontFamily: "Nunito", color: Colors.black),
+        style: const TextStyle(fontFamily: "Nunito", color: Colors.black),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
       trailing: Text(
         chat.time,
-        style: TextStyle(color: Colors.grey, fontFamily: "Nunito"),
+        style: const TextStyle(color: Colors.grey, fontFamily: "Nunito"),
       ),
     );
   }
@@ -92,11 +94,11 @@ class ChatTile extends StatelessWidget {
 class Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Text(
+        child: const Text(
           "Your Messages",
           style: TextStyle(
             fontSize: 22,
@@ -115,10 +117,10 @@ class SearchBar extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFEDEFF2),
+          color: const Color(0xFFEDEFF2),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: TextField(
+        child: const TextField(
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.search, color: Color(0xFF7E858C)), // Consistent icon color
             hintText: "Search Students",

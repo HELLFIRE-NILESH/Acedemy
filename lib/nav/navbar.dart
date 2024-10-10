@@ -1,9 +1,10 @@
 import 'package:acedemy/Pages/chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:acedemy/main.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:acedemy/Pages/homePage.dart';
+import 'package:acedemy/Pages/aiSearch.dart';
+import 'package:acedemy/Pages/Notification.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});
@@ -48,7 +49,7 @@ class _NavViewState extends State<NavView> {
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.search)),
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.chat_bubble_text)),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.time)),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.bell)),
         ],
       ),
       body: PageView(
@@ -60,7 +61,9 @@ class _NavViewState extends State<NavView> {
         },
         children: [
           HomePage(),
+          aiSearch(),
           ChatScreen(),
+          notification(),
         ],
       ),
     );
