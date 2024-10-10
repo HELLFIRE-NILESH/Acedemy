@@ -3,10 +3,10 @@
 
 <img align="right" alt="coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
 
-- 🔭 I’m currently working on [Acedemy](https://github.com/yourusername/acedemy)  
+- 🔭 I’m currently working on [Acedemy]([https://github.com/yourusername/acedemy](https://github.com/HELLFIRE-NILESH/Acedemy/))  
 - 🌱 I’m currently learning **AI integration and advanced Flutter techniques**  
 - 💬 Ask me about **Flutter, Firebase, AI in education**  
-- 📫 How to reach me **your.email@example.com**  
+- 📫 How to reach me **work.nilesh.pr@gmail.com**  
 - ⚡ Fun fact **AI is the future of classroom learning!**
 
 <h3 align="left">Connect with me:</h3>
