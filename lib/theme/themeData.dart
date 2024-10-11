@@ -11,7 +11,6 @@ class MyTheme {
   static ThemeData lightTheme = ThemeData(
     // General AppBar Theme
     appBarTheme: AppBarTheme(
-
       elevation: 0,
       centerTitle: true,
       backgroundColor: backgroundColor,
@@ -39,19 +38,22 @@ class MyTheme {
       onSurface: primaryColor,
     ),
 
-    // Button theme
+    // Enhanced Button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: primaryColor,
-        backgroundColor: buttonColor, // Text color on button
+        foregroundColor: Colors.white, // Text color on button
+        backgroundColor: primaryColor, // Button background color
         textStyle: TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
+          fontWeight: FontWeight.bold, // Bold text for emphasis
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12), // Rounded corners
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Increased padding
+        elevation: 6, // Increased elevation for better shadow effect
+        shadowColor: primaryColor.withOpacity(0.3), // Shadow color
       ),
     ),
 
@@ -112,7 +114,7 @@ class MyTheme {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12), // Increased border radius
-        borderSide: BorderSide(color:  Color(0xFFECECEC).withOpacity(0.5)), // Set border color to white
+        borderSide: BorderSide(color: Color(0xFFECECEC).withOpacity(0.5)), // Set border color to white
       ),
       labelStyle: TextStyle(
         color: primaryColor.withOpacity(0.8),

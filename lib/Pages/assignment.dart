@@ -10,14 +10,14 @@ class Assignment {
 class AssignmentPage extends StatelessWidget {
   final List<Assignment> assignments = List.generate(
     15,
-        (index) => Assignment('Assignment ${index + 1}', '2024-10-${20 + index}'), // Generates 15 assignments
-  )..sort((a, b) => b.dueDate.compareTo(a.dueDate)); // Sort in descending order
+        (index) => Assignment('Assignment ${index + 1}', '2024-10-${20 + index}'),
+  )..sort((a, b) => b.dueDate.compareTo(a.dueDate));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Assignments'),
+        title: const Text('Assignments'),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -28,20 +28,20 @@ class AssignmentPage extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: assignments.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 8.0), // Reduced space between items
+        separatorBuilder: (context, index) => const SizedBox(height: 8.0),
         itemBuilder: (context, index) {
           final assignment = assignments[index];
           return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0), // Adjusted margin
-            elevation: 4, // Added elevation for a shadow effect
+            margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+            elevation: 4,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12), // Rounded corners
+              borderRadius: BorderRadius.circular(12),
             ),
             child: ListTile(
               title: Text(
                 assignment.title,
                 style: TextStyle(
-                  fontSize: 16, // Reduced font size for title
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).primaryColor,
                 ),
@@ -49,11 +49,11 @@ class AssignmentPage extends StatelessWidget {
               subtitle: Text(
                 'Due Date: ${assignment.dueDate}',
                 style: TextStyle(
-                  fontSize: 14, // Reduced font size for subtitle
+                  fontSize: 14,
                   color: Colors.grey[600],
                 ),
               ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16), // Reduced padding inside ListTile
+              contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               onTap: () {
                 // Navigate to the assignment details page if needed
               },
@@ -64,4 +64,3 @@ class AssignmentPage extends StatelessWidget {
     );
   }
 }
-

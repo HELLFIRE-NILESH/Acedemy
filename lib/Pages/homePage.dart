@@ -1,8 +1,10 @@
-import 'package:acedemy/Pages/subjectPage.dart';
 import 'package:acedemy/widgets/assignment.dart';
 import 'package:acedemy/widgets/sectionTile.dart';
 import 'package:acedemy/widgets/subjectCard.dart';
 import 'package:flutter/material.dart';
+
+import 'subjectPage.dart'; // Import other required pages
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
               // Subjects Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Subjects"), // Use SectionTitle here
+                child: const SectionTitle("Subjects"),
               ),
               const SizedBox(height: 18),
 
@@ -38,8 +40,8 @@ class _HomePageState extends State<HomePage> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    const SizedBox(width: 10), // Spacer
-                    ...getSubjectCards(context), // Pass context for navigation
+                    const SizedBox(width: 10),
+                    ...getSubjectCards(context),
                   ],
                 ),
               ),
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               // Assignments Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Assignments"), // Use SectionTitle here
+                child: const SectionTitle("Assignments"),
               ),
               const SizedBox(height: 8),
               Padding(
@@ -56,10 +58,7 @@ class _HomePageState extends State<HomePage> {
                 child: ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    // Assuming getAssignmentCards is defined elsewhere
-                    ...getAssignmentCards(),
-                  ],
+                  children: getAssignmentCards(context), // Pass context here
                 ),
               ),
               const SizedBox(height: 24),
@@ -67,10 +66,9 @@ class _HomePageState extends State<HomePage> {
               // Video Lectures Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Recent Lectures"), // Use SectionTitle here
+                child: const SectionTitle("Recent Lectures"),
               ),
               const SizedBox(height: 8),
-              // Placeholder for Video Lectures content
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
@@ -100,7 +98,6 @@ class _HomePageState extends State<HomePage> {
     return subjects.map((subject) {
       return GestureDetector(
         onTap: () {
-          // Navigate to the SubjectPage with the subject name
           Navigator.push(
             context,
             MaterialPageRoute(

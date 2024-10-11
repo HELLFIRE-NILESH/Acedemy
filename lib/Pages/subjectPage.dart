@@ -1,12 +1,11 @@
 import 'package:acedemy/Pages/assignment.dart';
+import 'package:acedemy/Pages/syllabusPage.dart';
 import 'package:acedemy/Pages/videoLecture.dart';
-import 'package:acedemy/widgets/CardWithIcon.dart';
 import 'package:acedemy/widgets/InfoSection.dart';
 import 'package:acedemy/widgets/ListTileWithButton.dart';
 import 'package:acedemy/widgets/VideoLectureCard.dart';
 import 'package:acedemy/widgets/sectionTile.dart';
 import 'package:flutter/material.dart';
-
 
 class SubjectPage extends StatefulWidget {
   final String subjectName;
@@ -26,107 +25,123 @@ class _SubjectPageState extends State<SubjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.pop(context);
-        return false; // Allow back navigation
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.subjectName,
-            style: const TextStyle(
-              fontSize: 24,
-              fontFamily: 'Nunito',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.subjectName,
+          style: const TextStyle(
+            fontSize: 24,
+            fontFamily: 'Nunito',
+            fontWeight: FontWeight.bold,
           ),
         ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Syllabus Section
-              SectionTitle('Syllabus'),
-              const SizedBox(height: 8),
-              InfoSection(
-                [
-                  ListTileWithButton(
-                    icon: Icons.description_outlined,
-                    title: '${widget.subjectName} syllabus',
-                    onPressed: () {
-                      // Action for syllabus view
-                    },
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Syllabus Section
+            SectionTitle('Syllabus'),
+            const SizedBox(height: 8),
+            InfoSection(
+              [
+                ListTileWithButton(
+                  icon: Icons.description_outlined,
+                  title: '${widget.subjectName} syllabus',
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SyllabusPage(),));
+                  },
+                ),
+                ListTileWithButton(
+                  icon: Icons.web_asset_outlined,
+                  title: 'Reference Sites',
+                  onPressed: () {
+                    // Action for reference view
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            // Centered divider
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 350, // Adjust width as needed
+                  child: const Divider(
+                    height: 1,
+                    thickness: 1,
+                    color: Color(0xFF193238),
                   ),
-                  ListTileWithButton(
-                    icon: Icons.web_asset_outlined,
-                    title: 'Reference Sites',
-                    onPressed: () {
-                      // Action for reference view
-                    },
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // Assignments and Notes Section
+            SectionTitle('Assignments and Notes'),
+            const SizedBox(height: 8),
+            InfoSection(
+              [
+                ListTileWithButton(
+                  icon: Icons.assignment_outlined,
+                  title: 'Assignments',
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AssignmentPage()));
+                  },
+                ),
+                ListTileWithButton(
+                  icon: Icons.note_outlined,
+                  title: 'Notes',
+                  onPressed: () {
+                    // Handle notes
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            // Centered divider
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 350, // Adjust width as needed
+                  child: const Divider(
+                    height: 1,
+                    thickness: 1,
+                    color: Color(0xFF193238),
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              const Divider(
-                height: 1,
-                thickness: 1,
-                color: Color(0xFF193238),
-              ),
-              const SizedBox(height: 20),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
 
-              // Assignments and Notes Section
-              SectionTitle('Assignments and Notes'),
-              CardWithIcon(
-                icon: Icons.assignment_outlined,
-                title: 'Assignments',
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AssignmentPage()));
-                },
-              ),
-              const SizedBox(height: 8),
-              CardWithIcon(
-                icon: Icons.note_outlined,
-                title: 'Notes',
-                onTap: () {
-                  // Handle notes
-                },
-              ),
-              const SizedBox(height: 20),
-              const Divider(
-                height: 1,
-                thickness: 1,
-                color: Color(0xFF193238),
-              ),
-              const SizedBox(height: 20),
+            // Video Lectures Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SectionTitle('Video Lectures'),
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  onPressed: () {
+                    // Navigate to Video Lecture Page
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoLecture()));
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
 
-              // Video Lectures Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SectionTitle('Video Lectures'),
-                  IconButton(
-                    icon: const Icon(Icons.arrow_forward_ios),
-                    onPressed: () {
-                      // Navigate to Video Lecture Page
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => VideoLecture()));
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-
-              // Normal Video Lecture Cards
-              _buildNormalVideoLectureCards(),
-            ],
-          ),
+            // Normal Video Lecture Cards
+            _buildNormalVideoLectureCards(),
+          ],
         ),
       ),
     );
