@@ -1,9 +1,8 @@
 import 'package:acedemy/Pages/subjectPage.dart';
 import 'package:acedemy/widgets/assignment.dart';
+import 'package:acedemy/widgets/sectionTile.dart';
 import 'package:acedemy/widgets/subjectCard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -26,18 +24,14 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
+
+              // Subjects Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const Text(
-                  "Subjects",
-                  style: TextStyle(
-                    color: Color(0xFF193238),
-                    fontSize: 26,
-                    fontFamily: "Nunito",
-                  ),
-                ),
+                child: const SectionTitle("Subjects"), // Use SectionTitle here
               ),
               const SizedBox(height: 18),
+
               // Subject Cards List
               Container(
                 height: 210,
@@ -50,16 +44,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 24),
+
+              // Assignments Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const Text(
-                  "Assignments",
-                  style: TextStyle(
-                    color: Color(0xFF193238),
-                    fontSize: 26,
-                    fontFamily: "Nunito",
-                  ),
-                ),
+                child: const SectionTitle("Assignments"), // Use SectionTitle here
               ),
               const SizedBox(height: 8),
               Padding(
@@ -74,18 +63,25 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 24),
+
+              // Video Lectures Section
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const Text(
-                  "Video Lectures",
-                  style: TextStyle(
+                child: const SectionTitle("Recent Lectures"), // Use SectionTitle here
+              ),
+              const SizedBox(height: 8),
+              // Placeholder for Video Lectures content
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'No video lectures available yet.',
+                  style: const TextStyle(
                     color: Color(0xFF193238),
-                    fontSize: 26,
+                    fontSize: 16,
                     fontFamily: "Nunito",
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
             ],
           ),
         ),

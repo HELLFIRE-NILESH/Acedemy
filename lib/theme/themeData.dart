@@ -11,6 +11,7 @@ class MyTheme {
   static ThemeData lightTheme = ThemeData(
     // General AppBar Theme
     appBarTheme: AppBarTheme(
+
       elevation: 0,
       centerTitle: true,
       backgroundColor: backgroundColor,
