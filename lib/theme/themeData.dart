@@ -5,7 +5,7 @@ class MyTheme {
 
   static const Color primaryColor = Color(0xFF193238);
   static const Color backgroundColor = Color(0xFFF6F8F9);
-  static const Color accentColor = Color(0xFFff7043); // Orange accent
+  static const Color accentColor = Color(0xFF193238); // Orange accent
   static const Color buttonColor = Color(0xFFEDEDF2); // Light grey color for buttons
 
   static ThemeData lightTheme = ThemeData(
@@ -56,7 +56,8 @@ class MyTheme {
 
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: primaryColor, side: BorderSide(color: primaryColor),
+        foregroundColor: primaryColor,
+        side: BorderSide(color: primaryColor),
         textStyle: TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
@@ -70,7 +71,8 @@ class MyTheme {
 
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: accentColor, textStyle: TextStyle(
+        foregroundColor: accentColor,
+        textStyle: TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
         ),
@@ -98,18 +100,18 @@ class MyTheme {
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       filled: true,
-      fillColor: Colors.white,
+      fillColor: Color(0xFFECECEC),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: primaryColor),
+        borderRadius: BorderRadius.circular(12), // Increased border radius
+        borderSide: BorderSide(color: Color(0xFFECECEC)), // Set border color to white
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12), // Increased border radius
         borderSide: BorderSide(color: accentColor, width: 2),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
+        borderRadius: BorderRadius.circular(12), // Increased border radius
+        borderSide: BorderSide(color:  Color(0xFFECECEC).withOpacity(0.5)), // Set border color to white
       ),
       labelStyle: TextStyle(
         color: primaryColor.withOpacity(0.8),
@@ -121,8 +123,7 @@ class MyTheme {
       ),
     ),
 
-    // Use the imported text theme
-
+    // BottomNavigationBar Theme
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: backgroundColor,
       selectedItemColor: primaryColor,
@@ -143,7 +144,6 @@ class MyTheme {
         borderSide: BorderSide(color: primaryColor, width: 2),
       ),
     ),
-
 
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primaryColor,

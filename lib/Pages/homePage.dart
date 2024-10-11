@@ -15,81 +15,79 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: const Color(0xFFF6F8F9),
-      statusBarIconBrightness: Brightness.dark,
-    ));
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Acedemy"),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: const Text(
-                "Subjects",
-                style: TextStyle(
-                  color: Color(0xFF193238),
-                  fontSize: 26,
-                  fontFamily: "Nunito",
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: const Text(
+                  "Subjects",
+                  style: TextStyle(
+                    color: Color(0xFF193238),
+                    fontSize: 26,
+                    fontFamily: "Nunito",
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 18),
-            // Subject Cards List
-            Container(
-              height: 210,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  const SizedBox(width: 10), // Spacer
-                  ...getSubjectCards(context), // Pass context for navigation
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: const Text(
-                "Assignments",
-                style: TextStyle(
-                  color: Color(0xFF193238),
-                  fontSize: 26,
-                  fontFamily: "Nunito",
+              const SizedBox(height: 18),
+              // Subject Cards List
+              Container(
+                height: 210,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    const SizedBox(width: 10), // Spacer
+                    ...getSubjectCards(context), // Pass context for navigation
+                  ],
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  // Assuming getAssignmentCards is defined elsewhere
-                  ...getAssignmentCards(),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: const Text(
-                "Video Lectures",
-                style: TextStyle(
-                  color: Color(0xFF193238),
-                  fontSize: 26,
-                  fontFamily: "Nunito",
+              const SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: const Text(
+                  "Assignments",
+                  style: TextStyle(
+                    color: Color(0xFF193238),
+                    fontSize: 26,
+                    fontFamily: "Nunito",
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-          ],
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    // Assuming getAssignmentCards is defined elsewhere
+                    ...getAssignmentCards(),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: const Text(
+                  "Video Lectures",
+                  style: TextStyle(
+                    color: Color(0xFF193238),
+                    fontSize: 26,
+                    fontFamily: "Nunito",
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+            ],
+          ),
         ),
       ),
     );

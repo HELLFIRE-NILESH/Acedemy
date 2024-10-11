@@ -124,8 +124,7 @@ class SearchBar extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.search, color: Color(0xFF7E858C)), // Consistent icon color
             hintText: "Search Students",
-            hintStyle: TextStyle(color: Color(0xFF7E858C), ),
-            border: InputBorder.none,
+            filled: true,
             contentPadding: EdgeInsets.symmetric(vertical: 15),
           ),
         ),
