@@ -13,6 +13,8 @@ class AssignmentPage extends StatelessWidget {
         (index) => Assignment('Assignment ${index + 1}', '2024-10-${20 + index}'),
   )..sort((a, b) => b.dueDate.compareTo(a.dueDate));
 
+   AssignmentPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

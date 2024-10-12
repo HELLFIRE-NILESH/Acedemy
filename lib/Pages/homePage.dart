@@ -28,14 +28,14 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 24),
 
               // Subjects Section
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Subjects"),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: SectionTitle("Subjects"),
               ),
               const SizedBox(height: 18),
 
               // Subject Cards List
-              Container(
+              SizedBox(
                 height: 210,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 24),
 
               // Assignments Section
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Assignments"),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: SectionTitle("Assignments"),
               ),
               const SizedBox(height: 8),
               Padding(
@@ -64,16 +64,16 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 24),
 
               // Video Lectures Section
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: const SectionTitle("Recent Lectures"),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: SectionTitle("Recent Lectures"),
               ),
               const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   'No video lectures available yet.',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Color(0xFF193238),
                     fontSize: 16,
                     fontFamily: "Nunito",

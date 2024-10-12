@@ -10,7 +10,7 @@ class MyTheme {
 
   static ThemeData lightTheme = ThemeData(
     // General AppBar Theme
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       elevation: 0,
       centerTitle: true,
       backgroundColor: backgroundColor,
@@ -29,7 +29,7 @@ class MyTheme {
     cardColor: Colors.white,
 
     // Primary color scheme
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: primaryColor,
       secondary: accentColor,
       surface: Colors.white,
@@ -43,7 +43,7 @@ class MyTheme {
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white, // Text color on button
         backgroundColor: primaryColor, // Button background color
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
           fontWeight: FontWeight.bold, // Bold text for emphasis
@@ -60,8 +60,8 @@ class MyTheme {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryColor,
-        side: BorderSide(color: primaryColor),
-        textStyle: TextStyle(
+        side: const BorderSide(color: primaryColor),
+        textStyle: const TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
         ),
@@ -75,7 +75,7 @@ class MyTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: accentColor,
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontFamily: "Nunito",
           fontSize: 16,
         ),
@@ -83,7 +83,7 @@ class MyTheme {
     ),
 
     // FloatingActionButton Theme
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: primaryColor,
       foregroundColor: Colors.white,
     ),
@@ -95,7 +95,7 @@ class MyTheme {
     ),
 
     // Icon Theme
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: primaryColor,
     ),
 
@@ -103,18 +103,18 @@ class MyTheme {
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       filled: true,
-      fillColor: Color(0xFFECECEC),
+      fillColor: const Color(0xFFECECEC),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12), // Increased border radius
-        borderSide: BorderSide(color: Color(0xFFECECEC)), // Set border color to white
+        borderSide: const BorderSide(color: Color(0xFFECECEC)), // Set border color to white
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12), // Increased border radius
-        borderSide: BorderSide(color: accentColor, width: 2),
+        borderSide: const BorderSide(color: accentColor, width: 2),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12), // Increased border radius
-        borderSide: BorderSide(color: Color(0xFFECECEC).withOpacity(0.5)), // Set border color to white
+        borderSide: BorderSide(color: const Color(0xFFECECEC).withOpacity(0.5)), // Set border color to white
       ),
       labelStyle: TextStyle(
         color: primaryColor.withOpacity(0.8),
@@ -138,17 +138,17 @@ class MyTheme {
     tabBarTheme: TabBarTheme(
       labelColor: primaryColor,
       unselectedLabelColor: primaryColor.withOpacity(0.5),
-      labelStyle: TextStyle(
+      labelStyle: const TextStyle(
         fontFamily: "Nunito",
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
-      indicator: UnderlineTabIndicator(
+      indicator: const UnderlineTabIndicator(
         borderSide: BorderSide(color: primaryColor, width: 2),
       ),
     ),
 
-    progressIndicatorTheme: ProgressIndicatorThemeData(
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: primaryColor,
     ),
   );

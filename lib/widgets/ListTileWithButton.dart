@@ -10,8 +10,8 @@ class ListTileWithButton extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.onPressed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ListTileWithButton extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Nunito", // Use font from theme
           fontSize: 16, // Font size for title
           fontWeight: FontWeight.w600, // Semi-bold for better readability

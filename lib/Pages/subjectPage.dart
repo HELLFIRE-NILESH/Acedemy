@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class SubjectPage extends StatefulWidget {
   final String subjectName;
 
-  const SubjectPage({Key? key, required this.subjectName}) : super(key: key);
+  const SubjectPage({super.key, required this.subjectName});
 
   @override
   _SubjectPageState createState() => _SubjectPageState();
@@ -48,7 +48,7 @@ class _SubjectPageState extends State<SubjectPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Syllabus Section
-            SectionTitle('Syllabus'),
+            const SectionTitle('Syllabus'),
             const SizedBox(height: 8),
             InfoSection(
               [
@@ -70,12 +70,12 @@ class _SubjectPageState extends State<SubjectPage> {
             ),
             const SizedBox(height: 20),
             // Centered divider
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 350, // Adjust width as needed
-                  child: const Divider(
+                  child: Divider(
                     height: 1,
                     thickness: 1,
                     color: Color(0xFF193238),
@@ -86,7 +86,7 @@ class _SubjectPageState extends State<SubjectPage> {
             const SizedBox(height: 20),
 
             // Assignments and Notes Section
-            SectionTitle('Assignments and Notes'),
+            const SectionTitle('Assignments and Notes'),
             const SizedBox(height: 8),
             InfoSection(
               [
@@ -94,7 +94,7 @@ class _SubjectPageState extends State<SubjectPage> {
                   icon: Icons.assignment_outlined,
                   title: 'Assignments',
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AssignmentPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  AssignmentPage()));
                   },
                 ),
                 ListTileWithButton(
@@ -108,12 +108,12 @@ class _SubjectPageState extends State<SubjectPage> {
             ),
             const SizedBox(height: 20),
             // Centered divider
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 350, // Adjust width as needed
-                  child: const Divider(
+                  child: Divider(
                     height: 1,
                     thickness: 1,
                     color: Color(0xFF193238),
@@ -127,12 +127,12 @@ class _SubjectPageState extends State<SubjectPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SectionTitle('Video Lectures'),
+                const SectionTitle('Video Lectures'),
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed: () {
                     // Navigate to Video Lecture Page
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoLecture()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const VideoLecture()));
                   },
                 ),
               ],

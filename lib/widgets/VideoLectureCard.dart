@@ -10,8 +10,8 @@ class VideoLectureCard extends StatelessWidget {
     required this.title,
     required this.thumbnailUrl,
     required this.onCardTap,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class VideoLectureCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
                 child: Image.asset(
                   thumbnailUrl,
                   height: 100,

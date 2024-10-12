@@ -35,7 +35,7 @@ class _NavViewState extends State<NavView> {
       bottomNavigationBar: SnakeNavigationBar.color(
         currentIndex: _currentIndex,
         backgroundColor: Colors.white,
-        selectedItemColor: Color(0xFF193238),
+        selectedItemColor: const Color(0xFF193238),
         unselectedItemColor: Colors.grey,
         snakeViewColor: Colors.white,
         snakeShape: SnakeShape.circle,
@@ -59,7 +59,7 @@ class _NavViewState extends State<NavView> {
             _currentIndex = index;
           });
         },
-        children: [
+        children: const [
           HomePage(),
           ChatBotPage(),
           ChatScreen(),

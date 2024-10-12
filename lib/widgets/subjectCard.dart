@@ -6,11 +6,11 @@ class SubjectCard extends StatelessWidget {
   final String imageUrl;
 
   const SubjectCard({
-    Key? key,
+    super.key,
     required this.subjectName,
     required this.description,
     required this.imageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

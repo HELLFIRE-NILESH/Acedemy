@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:acedemy/widgets/sectionTile.dart';
 
 class SyllabusPage extends StatelessWidget {
-  const SyllabusPage({Key? key}) : super(key: key);
+  const SyllabusPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class SyllabusPage extends StatelessWidget {
             // Unit Title
             SectionTitle(unitTitle), // Using SectionTitle here
             const SizedBox(height: 8), // Space below title
-            ...topics.map((topic) => _buildBulletPoint(topic)).toList(),
+            ...topics.map((topic) => _buildBulletPoint(topic)),
           ],
         ),
       ),

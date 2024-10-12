@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:acedemy/api-Key.dart';
+import 'dart:async';
 
 class ChatBotPage extends StatefulWidget {
+  const ChatBotPage({super.key});
+
   @override
   _ChatBotPageState createState() => _ChatBotPageState();
 }
 
 class _ChatBotPageState extends State<ChatBotPage> {
-  // Define the color scheme
   static const Color primaryColor = Color(0xFF193238);
   static const Color backgroundColor = Color(0xFFF6F8F9);
   static const Color accentColor = Color(0xFF193238);
@@ -17,51 +19,56 @@ class _ChatBotPageState extends State<ChatBotPage> {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   bool _isLoading = false;
+  bool _showScrollDownButton = false;
 
-  // Rename context to chatContext
   String chatContext = '';
 
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      setState(() {
+        _showScrollDownButton = _scrollController.offset < _scrollController.position.maxScrollExtent - 100;
+      });
+    });
+  }
+
   void _sendMessage() async {
-    final String message = _controller.text.trim();
+    String message = _controller.text.trim();
     if (message.isNotEmpty) {
       setState(() {
         messages.add("You: $message");
-        chatContext += "You: $message\n"; // Update chatContext with user's message
+        chatContext += "You: $message\n";
       });
       _controller.clear();
       _scrollToBottom();
 
       setState(() {
-        _isLoading = true; // Show loading animation
+        _isLoading = true;
       });
 
       final String botResponse = await _getAIResponse(message);
-
-      // Remove asterisks from the bot's response
-      String formattedResponse = _formatBotResponse(botResponse);
-
-      setState(() {
-        messages.add("Bot: $formattedResponse");
-        chatContext += "Bot: $formattedResponse\n"; // Update chatContext with bot's response
-        _isLoading = false; // Hide loading animation
-      });
-      _scrollToBottom();
+      _displayBotResponseWordByWord(botResponse);
     }
   }
 
   Future<String> _getAIResponse(String message) async {
     final model = GenerativeModel(
       model: 'gemini-1.5-flash',
-      apiKey: apiKey, // Use the API key from the separate file
+      apiKey: apiKey,
     );
 
-    // Combine chatContext with the current message
-    String fullContext = chatContext + "You: $message\n";
+    String fullContext = "${chatContext}You: $message";
 
     try {
       final response = await model.generateContent([Content.text(fullContext)]);
-      if (response != null && response.text != null && response.text!.isNotEmpty) {
-        return response.text ?? "Bot couldn't understand.";
+      if (response.text != null && response.text!.isNotEmpty) {
+        String botResponse = response.text ?? "Bot couldn't understand.";
+        botResponse = _removeEcho(botResponse, message);
+        botResponse = _formatBotResponse(botResponse);
+
+        return botResponse;
       } else {
         return "No response from the bot.";
       }
@@ -70,26 +77,58 @@ class _ChatBotPageState extends State<ChatBotPage> {
     }
   }
 
-  // Function to format the response by removing stars and applying bold style
+  String _removeEcho(String response, String userMessage) {
+    if (response.startsWith("You: $userMessage")) {
+      return response.replaceFirst("You: $userMessage", '').trim();
+    }
+    return response;
+  }
+
   String _formatBotResponse(String response) {
-    return response.replaceAll('**', ''); // Remove all '**' occurrences
+    return response.replaceAll('*', '');
+  }
+
+  void _displayBotResponseWordByWord(String botResponse) {
+    List<String> words = botResponse.split(' ');
+    String currentResponse = '';
+    int index = 0;
+
+    Timer.periodic(const Duration(milliseconds: 50), (timer) { // Adjusted the speed to synchronize with scroll speed
+      if (index < words.length) {
+        setState(() {
+          currentResponse += '${words[index]} ';
+          if (messages.isNotEmpty && messages.last.startsWith("Bot: ")) {
+            messages[messages.length - 1] = "Bot: $currentResponse";
+          } else {
+            messages.add("Bot: $currentResponse");
+          }
+          chatContext += "Bot: $currentResponse\n";
+        });
+        _scrollToBottom(); // Ensure scrolling is synchronized with the response display
+        index++;
+      } else {
+        timer.cancel();
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    });
   }
 
   void _scrollToBottom() {
-    Future.delayed(Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 50), () { // Adjusted for better sync
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 50),
         curve: Curves.easeOut,
       );
     });
   }
 
-  // Function to clear the chat
   void _clearChat() {
     setState(() {
-      messages.clear(); // Clear the messages list
-      chatContext = ''; // Reset the chat context
+      messages.clear();
+      chatContext = '';
     });
   }
 
@@ -99,14 +138,15 @@ class _ChatBotPageState extends State<ChatBotPage> {
       child: Align(
         alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
         child: Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isUser ? accentColor : Colors.grey[300], // Set user bubble to accentColor
+            color: isUser ? accentColor : Colors.grey[300],
             borderRadius: BorderRadius.circular(15),
           ),
-          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75), // Adjust width to 75% of the screen
+          constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.75),
           child: Text(
-            message.substring(5), // Skip "You: " or "Bot: "
+            message.substring(5),
             style: TextStyle(
               color: isUser ? Colors.white : Colors.black87,
               fontSize: 16,
@@ -121,70 +161,85 @@ class _ChatBotPageState extends State<ChatBotPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AI Chat Bot'),
+        title: const Text('AI Chat Bot'),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.clear), // Clear icon
-            onPressed: () {
-              _clearChat(); // Clear chat when pressed
-            },
+            icon: const Icon(Icons.clear),
+            onPressed: _clearChat,
           ),
         ],
       ),
-      body: Container(
-        color: backgroundColor, // Set background color for the entire body
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                controller: _scrollController,
-                itemCount: messages.length + (_isLoading ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index == messages.length) {
-                    return TypingIndicator(); // Show typing indicator when bot is typing
-                  }
-                  final isUser = messages[index].startsWith("You:");
-                  return _buildMessage(messages[index], isUser);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      maxLines: null, // Allows multiline input
-                      keyboardType: TextInputType.multiline, // Set keyboard type to multiline
-                      decoration: InputDecoration(
-                        hintText: 'Type a message...',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 15,
+      body: Stack(
+        children: [
+          Container(
+            color: backgroundColor,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: messages.length + (_isLoading ? 1 : 0),
+                    itemBuilder: (context, index) {
+                      if (index == messages.length) {
+                        return const TypingIndicator();
+                      }
+                      final isUser = messages[index].startsWith("You:");
+                      return _buildMessage(messages[index], isUser);
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _controller,
+                          minLines: 1,
+                          maxLines: 5,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Type a message...',
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 15,
+                            ),
+                          ),
+                          onSubmitted: (value) {
+                            _sendMessage();
+                          },
                         ),
                       ),
-                      onSubmitted: (value) {
-                        _sendMessage(); // Send message when Enter is pressed
-                      },
-                    ),
+                      const SizedBox(width: 8), // Add spacing between TextField and button
+                      IconButton(
+                        icon: const Icon(Icons.send, color: accentColor),
+                        onPressed: _sendMessage,
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: Icon(Icons.send, color: accentColor), // Use accent color for send button
-                    onPressed: _sendMessage,
-                  ),
-                ],
+                ),
+              ],
+            ),
+          ),
+          if (_showScrollDownButton) // Only show the button when necessary
+            Positioned(
+              bottom: 80,
+              right: 16,
+              child: FloatingActionButton(
+                backgroundColor: accentColor,
+                onPressed: _scrollToBottom,
+                shape: const CircleBorder(),
+                child: const Icon(Icons.arrow_downward),
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -192,6 +247,8 @@ class _ChatBotPageState extends State<ChatBotPage> {
 
 // Typing indicator with three bouncing dots
 class TypingIndicator extends StatefulWidget {
+  const TypingIndicator({super.key});
+
   @override
   _TypingIndicatorState createState() => _TypingIndicatorState();
 }
@@ -221,20 +278,21 @@ class _TypingIndicatorState extends State<TypingIndicator> with SingleTickerProv
       child: Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.symmetric(vertical: 5),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(15),
           ),
-          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75), // Restrict width to 75% of the screen
+          constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.75),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildDot(0),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               _buildDot(1),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               _buildDot(2),
             ],
           ),
@@ -244,20 +302,16 @@ class _TypingIndicatorState extends State<TypingIndicator> with SingleTickerProv
   }
 
   Widget _buildDot(int index) {
-    return ScaleTransition(
-      scale: Tween<double>(begin: 1.0, end: 0.5).animate(
+    return FadeTransition(
+      opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _controller,
-          curve: Interval(0.0 + (index * 0.2), 0.5 + (index * 0.2), curve: Curves.easeInOut),
+          curve: Interval(index * 0.2, 1.0, curve: Curves.easeInOut),
         ),
       ),
-      child: Container(
-        width: 8,
-        height: 8,
-        decoration: BoxDecoration(
-          color: Colors.black54,
-          shape: BoxShape.circle,
-        ),
+      child: const CircleAvatar(
+        radius: 4,
+        backgroundColor: Colors.black,
       ),
     );
   }

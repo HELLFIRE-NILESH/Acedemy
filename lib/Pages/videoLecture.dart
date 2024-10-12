@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class VideoLecture extends StatefulWidget {
   const VideoLecture({super.key});
@@ -10,7 +9,7 @@ class VideoLecture extends StatefulWidget {
 
 class _VideoLectureState extends State<VideoLecture> {
   final TextEditingController _searchController = TextEditingController();
-  List<String> _lectures = [
+  final List<String> _lectures = [
     'Lecture 1: Introduction to IoT',
     'Lecture 2: Advanced Data Analysis',
     'Lecture 3: AI in IoT',
@@ -59,12 +58,12 @@ class _VideoLectureState extends State<VideoLecture> {
             TextField(
               controller: _searchController,
               onChanged: _filterLectures,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Search Lectures',
 
                 filled: true,
-                fillColor: const Color(0xFFECECEC), // Light background color for the search box
-                prefixIcon: const Icon(Icons.search),
+                fillColor: Color(0xFFECECEC), // Light background color for the search box
+                prefixIcon: Icon(Icons.search),
               ),
             ),
             const SizedBox(height: 16),

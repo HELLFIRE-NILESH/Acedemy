@@ -8,12 +8,12 @@ class AssignmentCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const AssignmentCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.dueDate,
     required this.total,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ List<Widget> getAssignmentCards(BuildContext context) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => AssignmentPage(), // Navigate to AssignmentPage
+            builder: (context) =>  AssignmentPage(), // Navigate to AssignmentPage
           ),
         );
       },
@@ -90,7 +90,7 @@ List<Widget> getAssignmentCards(BuildContext context) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => AssignmentPage(), // Navigate to AssignmentPage
+            builder: (context) =>  AssignmentPage(), // Navigate to AssignmentPage
           ),
         );
       },
@@ -103,7 +103,7 @@ List<Widget> getAssignmentCards(BuildContext context) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => AssignmentPage(), // Navigate to AssignmentPage
+            builder: (context) =>  AssignmentPage(), // Navigate to AssignmentPage
           ),
         );
       },

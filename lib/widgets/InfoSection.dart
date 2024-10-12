@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class InfoSection extends StatelessWidget {
   final List<Widget> children;
 
-  const InfoSection(this.children, {Key? key}) : super(key: key);
+  const InfoSection(this.children, {super.key});
 
   @override
   Widget build(BuildContext context) {

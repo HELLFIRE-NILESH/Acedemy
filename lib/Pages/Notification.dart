@@ -11,7 +11,7 @@ class _notificationState extends State<notification> {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       appBar: AppBar(
-        title: Text("Anouncement"),
+        title: const Text("Anouncement"),
       ),
     ));
   }
