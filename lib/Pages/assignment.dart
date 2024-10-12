@@ -28,35 +28,67 @@ class AssignmentPage extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: assignments.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 8.0),
+        separatorBuilder: (context, index) => const SizedBox(height: 16.0), // Space between list items
         itemBuilder: (context, index) {
           final assignment = assignments[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListTile(
-              title: Text(
-                assignment.title,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
-                ),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Container(
+              padding: const EdgeInsets.all(16.0), // Padding inside each tile (around the text and icon)
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 6,
+                    spreadRadius: 2,
+                  ),
+                ],
               ),
-              subtitle: Text(
-                'Due Date: ${assignment.dueDate}',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Rounded Icon container
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEBEDED), // Light grey background
+                      borderRadius: BorderRadius.circular(12), // Rounded corners
+                    ),
+                    child: const Icon(
+                      Icons.assignment_outlined,
+                      size: 28,
+                      color: Color(0xFF193238), // Darker icon color
+                    ),
+                  ),
+                  const SizedBox(width: 20), // Space between icon and text
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Assignment title
+                      Text(
+                        assignment.title,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF193238), // Dark text color
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      // Assignment due date
+                      Text(
+                        'Date: ${assignment.dueDate}',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey[600], // Grey for secondary text
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              onTap: () {
-                // Navigate to the assignment details page if needed
-              },
             ),
           );
         },

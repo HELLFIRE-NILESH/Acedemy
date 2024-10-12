@@ -61,7 +61,7 @@ class _NavViewState extends State<NavView> {
         },
         children: [
           HomePage(),
-          aiSearch(),
+          ChatBotPage(),
           ChatScreen(),
           notification(),
         ],

@@ -5,7 +5,7 @@ class MyTheme {
 
   static const Color primaryColor = Color(0xFF193238);
   static const Color backgroundColor = Color(0xFFF6F8F9);
-  static const Color accentColor = Color(0xFF193238); // Orange accent
+  static const Color accentColor = Color(0xFF193238);
   static const Color buttonColor = Color(0xFFEDEDF2); // Light grey color for buttons
 
   static ThemeData lightTheme = ThemeData(
