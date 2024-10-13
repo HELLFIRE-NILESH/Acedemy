@@ -153,9 +153,9 @@ class _NotificationPageState extends State<NotificationPage> {
 
                   // Show a snackbar message after deletion
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Notification dismissed'),
-                      duration: const Duration(seconds: 2),
+                      duration: Duration(seconds: 2),
                     ),
                   );
                 },

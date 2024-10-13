@@ -81,11 +81,11 @@ class _UserProfileState extends State<UserProfile> {
               const SizedBox(height: 20),
 
               // Profile Details: Name, Phone Number, Semester, Roll Number
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Name
-                  const Text(
+                  Text(
                     "Suraj Verma",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -94,30 +94,30 @@ class _UserProfileState extends State<UserProfile> {
                       color: primaryColor,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5),
 
                   // Phone Number
-                  const Text(
+                  Text(
                     "9340236043",
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.grey,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5),
 
                   // Semester and Branch
-                  const Text(
+                  Text(
                     "CSE, 5th Semester",
                     style: TextStyle(
                       fontSize: 18,
                       color: primaryColor,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5),
 
                   // Roll Number
-                  const Text(
+                  Text(
                     "Roll No: 22113C04033",
                     style: TextStyle(
                       fontSize: 18,
@@ -144,11 +144,11 @@ class _UserProfileState extends State<UserProfile> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0), // Padding inside the card
+        child: const Padding(
+          padding: EdgeInsets.all(16.0), // Padding inside the card
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               // Bio Title
               Text(
                 "Bio",

@@ -23,11 +23,11 @@ class _HomePageState extends State<HomePage> {
           title: const Text("Acedemy"),
           actions: [
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 10),
+              padding:  const EdgeInsets.symmetric(horizontal: 10),
               child: IconButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationPage(),));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage(),));
               },
-                  icon: Icon(CupertinoIcons.bell)),
+                  icon: const Icon(CupertinoIcons.bell)),
             )
 
           ],

@@ -12,7 +12,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  TextEditingController _messageController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
   List<Map<String, dynamic>> messages = [];
   final ScrollController _scrollController = ScrollController();
 

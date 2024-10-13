@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:acedemy/api-Key.dart';
 import 'dart:async';
+import 'api-key.dart';
 
 class ChatBotPage extends StatefulWidget {
   const ChatBotPage({super.key});

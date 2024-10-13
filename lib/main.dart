@@ -5,7 +5,7 @@ import 'package:acedemy/nav/navbar.dart';
 
 void main() {
   // Set the status bar color and brightness for the entire app
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: MyTheme.backgroundColor, // Set your desired status bar color
     statusBarIconBrightness: Brightness.dark, // Change to light for dark backgrounds
   ));
