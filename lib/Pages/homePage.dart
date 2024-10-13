@@ -1,9 +1,10 @@
+import 'package:acedemy/Pages/Notification.dart';
 import 'package:acedemy/widgets/assignment.dart';
 import 'package:acedemy/widgets/sectionTile.dart';
 import 'package:acedemy/widgets/subjectCard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'subjectPage.dart'; // Import other required pages
+import 'subjectPage.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -20,6 +21,16 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Acedemy"),
+          actions: [
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 10),
+              child: IconButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationPage(),));
+              },
+                  icon: Icon(CupertinoIcons.bell)),
+            )
+
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(

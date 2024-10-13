@@ -7,17 +7,19 @@ class MyTheme {
   static const Color backgroundColor = Color(0xFFF6F8F9);
   static const Color accentColor = Color(0xFF193238);
   static const Color buttonColor = Color(0xFFEDEDF2); // Light grey color for buttons
+  static const Color buttonHoverColor = Color(0xFFBDC3C7); // Hover color for buttons
 
   static ThemeData lightTheme = ThemeData(
     // General AppBar Theme
     appBarTheme: const AppBarTheme(
-      elevation: 0,
+      elevation: 0, // Increased elevation for more depth
       centerTitle: true,
       backgroundColor: backgroundColor,
       titleSpacing: 2,
       titleTextStyle: TextStyle(
         fontFamily: "Nunito",
-        fontSize: 22,
+        fontSize: 24, // Slightly larger font size
+        fontWeight: FontWeight.bold, // Added weight for emphasis
         color: primaryColor,
       ),
       iconTheme: IconThemeData(
@@ -52,7 +54,7 @@ class MyTheme {
           borderRadius: BorderRadius.circular(12), // Rounded corners
         ),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Increased padding
-        elevation: 6, // Increased elevation for better shadow effect
+        elevation: 8, // Increased elevation for better shadow effect
         shadowColor: primaryColor.withOpacity(0.3), // Shadow color
       ),
     ),
@@ -150,6 +152,20 @@ class MyTheme {
 
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: primaryColor,
+    ),
+
+    // Additional themes for enhanced usability and aesthetics
+    cardTheme: CardTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12), // Rounded corners for cards
+      ),
+      elevation: 4, // Added elevation for cards
+    ),
+
+    // Elevated Button Hover Effects
+    buttonTheme: const ButtonThemeData(
+      buttonColor: primaryColor,
+      hoverColor: buttonHoverColor,
     ),
   );
 }

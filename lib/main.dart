@@ -4,6 +4,11 @@ import 'theme/themeData.dart';
 import 'package:acedemy/nav/navbar.dart';
 
 void main() {
+  // Set the status bar color and brightness for the entire app
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: MyTheme.backgroundColor, // Set your desired status bar color
+    statusBarIconBrightness: Brightness.dark, // Change to light for dark backgrounds
+  ));
   runApp(const MyApp());
 }
 
@@ -18,10 +23,6 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.white, // Set the color of the navigation bar
-      systemNavigationBarIconBrightness: Brightness.dark, // Change icon brightness
-    ));
     return MaterialApp(
       themeMode:ThemeMode.light,
       theme: MyTheme.lightTheme,
