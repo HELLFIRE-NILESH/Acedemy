@@ -1,14 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'theme/themeData.dart';
 import 'package:acedemy/nav/navbar.dart';
 
-void main() {
+Future<void> main() async {
   // Set the status bar color and brightness for the entire app
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: MyTheme.backgroundColor, // Set your desired status bar color
     statusBarIconBrightness: Brightness.dark, // Change to light for dark backgrounds
   ));
+
   runApp(const MyApp());
 }
 

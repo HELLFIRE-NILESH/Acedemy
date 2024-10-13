@@ -1,6 +1,7 @@
 import 'package:acedemy/Pages/assignment.dart';
 import 'package:acedemy/Pages/syllabusPage.dart';
 import 'package:acedemy/Pages/videoLecture.dart';
+import 'package:acedemy/Pages/videoPlayer.dart';
 import 'package:acedemy/widgets/InfoSection.dart';
 import 'package:acedemy/widgets/ListTileWithButton.dart';
 import 'package:acedemy/widgets/VideoLectureCard.dart';
@@ -157,7 +158,10 @@ class _SubjectPageState extends State<SubjectPage> {
             title: lecture,
             thumbnailUrl: 'assets/images/ds.jpg', // Replace with actual image URL
             onCardTap: () {
-              // Handle video lecture card tap
+              Navigator.push(context, MaterialPageRoute(builder: (context) => FullScreenVideoPlayer(
+                videoPath: 'assets/video/song.mp4',
+                title: 'Smile By Umair',
+              ),));
             },
           );
         }).toList(),

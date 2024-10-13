@@ -1,3 +1,4 @@
+import 'package:acedemy/Pages/videoPlayer.dart';
 import 'package:flutter/material.dart';
 
 class VideoLecture extends StatefulWidget {
@@ -20,8 +21,6 @@ class _VideoLectureState extends State<VideoLecture> {
   void initState() {
     super.initState();
     _filteredLectures = _lectures; // Initially, show all lectures
-
-
   }
 
   void _filterLectures(String query) {
@@ -60,7 +59,6 @@ class _VideoLectureState extends State<VideoLecture> {
               onChanged: _filterLectures,
               decoration: const InputDecoration(
                 labelText: 'Search Lectures',
-
                 filled: true,
                 fillColor: Color(0xFFECECEC), // Light background color for the search box
                 prefixIcon: Icon(Icons.search),
@@ -77,7 +75,16 @@ class _VideoLectureState extends State<VideoLecture> {
                     channelName: 'Tech Channel', // Placeholder channel name
                     thumbnailUrl: 'assets/images/ds.jpg',
                     onCardTap: () {
-                      // Handle tap for each lecture
+                      // Navigate to full-screen video player
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullScreenVideoPlayer(
+                            videoPath: 'assets/video/song.mp4',
+                            title: 'Smile By Umair',
+                          ),
+                        ),
+                      );
                     },
                   );
                 },
